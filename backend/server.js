@@ -19,10 +19,13 @@ app.use('/api/products', productRoutes);
 app.use('/api/customers', customerRoutes); 
 app.use('/api/bills', billRoutes);
 
-// Database Connection
-mongoose.connect(process.env.MONGO_URI)
+// Database Connection (Vercel ke liye optimized)
+mongoose.connect(process.env.MONGO_URI, {
+  serverSelectionTimeoutMS: 5000, // 5 second me connect nahi hua to turant error dega
+  family: 4 // Sabse zaroori: Ye Vercel ko IPv4 use karne pe force karta hai, jisse timeout theek hota hai
+})
   .then(() => console.log('✅ MongoDB Connected Successfully!'))
-  .catch((err) => console.error('❌ MongoDB Connection Error: ', err));
+  .catch((err) => console.error('❌ MongoDB Connection Error: ', err.message));
 
 // Basic Test Route (Taki Vercel par check kar sakein ki API chal rahi hai)
 app.get('/', (req, res) => {
