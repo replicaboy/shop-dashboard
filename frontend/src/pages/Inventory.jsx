@@ -16,7 +16,7 @@ const Inventory = () => {
   // Backend se saara stock mangwane ka function
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('https://gopal-ji-general-store.vercel.app/api/products');
+      const response = await axios.get('shop-dashboard-pi.vercel.app/api/products');
       setProducts(response.data);
       setLoading(false);
     } catch (error) {
@@ -34,7 +34,7 @@ const Inventory = () => {
   const handleAddProduct = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://gopal-ji-general-store.vercel.app/api/products/add', newProduct);
+      await axios.post('shop-dashboard-pi.vercel.app/api/products/add', newProduct);
       alert("✅ Naya saaman successfully add ho gaya!");
       setNewProduct({ name: '', costPrice: '', sellingPrice: '', stockQuantity: '' }); // Form clear karo
       fetchProducts(); // Table ko update karo
