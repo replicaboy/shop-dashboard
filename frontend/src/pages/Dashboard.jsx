@@ -3,7 +3,7 @@ import axios from 'axios';
 import { IndianRupee, TrendingUp, AlertCircle, Users, PackageOpen } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const API_BASE = 'shop-dashboard-pi.vercel.app/api';
+const API_BASE = 'https://shop-dashboard-pi.vercel.app/api';
 
 const Dashboard = () => {
   const [stats, setStats] = useState({
